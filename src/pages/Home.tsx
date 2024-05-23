@@ -8,10 +8,11 @@ const Home = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   useEffect(() => {
+    setTimeout(() => {}, 3000);
     if (!user) {
       navigate("/login");
     }
-  }, []);
+  }, [user]);
   console.log(user, "home");
   return (
     <div className="flex w-full h-full flex-col md:flex-row gap-3 md:gap-0">

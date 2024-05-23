@@ -1,13 +1,21 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthProvider";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigate();
+  const { user } = useContext(AuthContext);
 
+  useEffect(() => {
+    console.log("d");
+    if (user) {
+      navigation("/");
+    }
+  }, [user]);
   const handleSubmit = (e: any) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, username, password)
