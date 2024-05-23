@@ -1,14 +1,26 @@
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
+import { auth } from "../firebase";
 
 const Register = () => {
+  const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e:any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    // Add your registration logic here
-    console.log("Username:", username);
-    console.log("Password:", password);
+    if (username !== "" && password !== "") {
+      createUserWithEmailAndPassword(auth, username, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          alert(errorMessage);
+        });
+    }
   };
 
   return (
@@ -19,6 +31,13 @@ const Register = () => {
           onSubmit={handleSubmit}
           className="w-full flex flex-col items-center"
         >
+          <input
+            type="text"
+            placeholder="Name"
+            className="w-3/4 p-2 mb-3 border border-gray-600 rounded bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
           <input
             type="text"
             placeholder="Username"
