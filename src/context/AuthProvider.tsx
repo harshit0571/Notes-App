@@ -3,13 +3,11 @@ import { createContext, ReactNode, useEffect, useState } from "react";
 import { auth } from "../firebase";
 
 interface AuthContextType {
-  user: object;
-  setUser: (user: object) => void;
+  user: any;
+  setUser: (user: any) => void;
 }
 
-export const AuthContext = createContext<AuthContextType | undefined>(
-  undefined
-);
+export const AuthContext = createContext<AuthContextType | any>(undefined);
 interface props {
   children: ReactNode;
 }
@@ -21,6 +19,7 @@ const AuthProvider = ({ children }: props) => {
       if (user) {
         const uid = user.uid;
         console.log(user, uid, "hello");
+        setUser(user);
       } else {
         console.log("user, uid");
       }
