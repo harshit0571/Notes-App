@@ -15,7 +15,7 @@ const Home = () => {
   }, [user]);
   console.log(user, "home");
   return (
-    <div className="flex w-full h-full flex-col md:flex-row gap-3 md:gap-0">
+    <div className="flex w-full h-full flex-col md:flex-row md:gap-0">
       <Sidebar />
       <Container />
     </div>

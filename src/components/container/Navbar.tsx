@@ -25,7 +25,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-full h-[8vh] flex justify-between px-2 items-center relative">
+    <div className="w-full h-[8vh] flex justify-between px-2 bg-white items-center top-0 sticky">
       <input
         type="text"
         placeholder="🔎 search"
