@@ -16,7 +16,7 @@ const Sidebar = () => {
           +
         </button>
         <div
-          className={`transition-opacity duration-500 ${
+          className={`transition-opacity duration-500 w-[60%] md:w-max ${
             colors ? "opacity-100" : "opacity-0"
           }`}
         >

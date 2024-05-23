@@ -2,7 +2,7 @@ import { colorsArray } from "./ColorsArray";
 
 const Colors = () => {
   return (
-    <div className="flex md:flex-col items-center gap-3 overflow-auto md:overflow-visible">
+    <div className="flex md:flex-col w-[100%] items-center gap-3 overflow-auto md:overflow-visible">
       {colorsArray.map((color, index) => (
         <button
           key={index}
