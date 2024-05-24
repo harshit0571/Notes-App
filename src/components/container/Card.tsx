@@ -1,41 +1,65 @@
-import { useState } from "react";
+// Card.tsx
 
-interface props {
-  notes: string;
+import { useContext, useState } from "react";
+import { AuthContext } from "../../context/AuthProvider";
+
+interface Props {
+  note: string;
   date: string;
   editing: boolean;
-  setNotes: any;
+  color: string;
+  index: number;
 }
 
-const Card = ({ notes, date, editing }: props) => {
-  const [isEditing, setIsEditing] = useState(editing || notes === "");
-  const [text, setText] = useState(notes);
+const Card = ({ note, date, editing, color, index }: Props) => {
+  const [isEditing, setIsEditing] = useState(editing || note === "");
+  const [text, setText] = useState(""); // Initialize text with an empty string
+  const { notes, setNotes } = useContext(AuthContext);
 
   const handleEditClick = () => {
     setIsEditing(!isEditing);
   };
 
-  const handleInputChange = (e: any) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value);
   };
 
   const handleSaveClick = () => {
+    // Create a copy of the notes array
+    const updatedNotes = [...notes];
+    // Update the note at the specified index with the new text
+    updatedNotes[index].note = text;
+    // Update the state with the new notes array
+    setNotes(updatedNotes);
+    // Set editing mode to false
     setIsEditing(false);
   };
 
   const handleDeleteClick = () => {
-    // Handle delete action here
-    console.log("Delete clicked");
+    // Create a copy of the notes array
+    const updatedNotes = [...notes];
+    // Remove the note at the specified index
+    updatedNotes.splice(index, 1);
+    // Update the state with the new notes array
+    setNotes(updatedNotes);
   };
 
   return (
-    <div className="relative w-[250px] p-4 min-h-[200px] overflow-scroll pt-6 bg-red-400 rounded-2xl flex flex-col justify-between group gap-4 h-[250px]">
+    <div
+      className={
+        "relative w-[250px] p-4 min-h-[200px] overflow-scroll pt-6 rounded-2xl flex flex-col justify-between group gap-4 h-[250px] " +
+        color
+      }
+    >
       <div className="overflow-auto h-[70%] max-h-[150px]">
         {isEditing ? (
           <textarea
             value={text}
             onChange={handleInputChange}
-            className="w-full p-2 rounded bg-red-400 min-h-[150px] outline-none border-blue-200"
+            className={
+              "w-full p-2 rounded min-h-[150px] outline-none border-blue-200 " +
+              color
+            }
           />
         ) : (
           <p>{text}</p>

@@ -1,3 +1,5 @@
+// Colors.tsx
+
 import { useContext } from "react";
 import { colorsArray } from "./ColorsArray";
 import { AuthContext } from "../../context/AuthProvider";
@@ -5,14 +7,21 @@ import { AuthContext } from "../../context/AuthProvider";
 const Colors = () => {
   const { notes, setNotes } = useContext(AuthContext);
 
-  const handleColorClick = (color:any) => {
+  const handleColorClick = (color: any) => {
     const currentDate = new Date().toISOString().split("T")[0];
+    const randomId = generateRandomId();
     const newNote = {
+      id: randomId,
       note: "",
-      date: currentDate
+      date: currentDate,
+      color: color,
     };
     const updatedNotes = [newNote, ...notes];
     setNotes(updatedNotes);
+  };
+
+  const generateRandomId = () => {
+    return Math.random().toString(36).substr(2) + Date.now().toString(36);
   };
 
   return (
