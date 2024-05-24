@@ -2,6 +2,8 @@
 
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider";
+import { deleteDoc, doc, updateDoc } from "firebase/firestore";
+import { db } from "../../firebase";
 
 interface Props {
   note: string;
@@ -13,9 +15,27 @@ interface Props {
 
 const Card = ({ note, date, editing, color, index }: Props) => {
   const [isEditing, setIsEditing] = useState(editing || note === "");
-  const [text, setText] = useState(""); // Initialize text with an empty string
+  const [text, setText] = useState(note); // Initialize text with an empty string
   const { notes, setNotes } = useContext(AuthContext);
 
+  console.log(note, "d");
+
+  const updateTask = async (updatedNote: object) => {
+    const taskDocRef = doc(db, "tasks", updatedNote.id);
+    console.log(taskDocRef, "d");
+    await updateDoc(taskDocRef, updatedNote);
+  };
+  const deleteTask = async (taskId: string) => {
+    const taskDocRef = doc(db, "tasks", taskId);
+    console.log(taskDocRef, "delete");
+    await deleteDoc(taskDocRef)
+      .then((d) => {
+        console.log(d, "d");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const handleEditClick = () => {
     setIsEditing(!isEditing);
   };
@@ -25,23 +45,20 @@ const Card = ({ note, date, editing, color, index }: Props) => {
   };
 
   const handleSaveClick = () => {
-    // Create a copy of the notes array
     const updatedNotes = [...notes];
-    // Update the note at the specified index with the new text
     updatedNotes[index].note = text;
-    // Update the state with the new notes array
     setNotes(updatedNotes);
-    // Set editing mode to false
+    updateTask(updatedNotes[index]);
     setIsEditing(false);
   };
 
   const handleDeleteClick = () => {
-    // Create a copy of the notes array
     const updatedNotes = [...notes];
-    // Remove the note at the specified index
+    const id = updatedNotes[index].id;
+    console.log(id, "dnj");
     updatedNotes.splice(index, 1);
-    // Update the state with the new notes array
     setNotes(updatedNotes);
+    deleteTask(id);
   };
 
   return (

@@ -4,7 +4,7 @@ import { AuthContext } from "../../context/AuthProvider";
 
 const Notes = () => {
   const { notes } = useContext(AuthContext);
-  console.log(notes);
+  console.log(notes, "yo");
   return (
     <div className="flex flex-col p-4">
       <h1 className="text-3xl w-max font-semibold h-max md:mt-3 text-center md:text-left">
