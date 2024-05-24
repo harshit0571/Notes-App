@@ -7,7 +7,86 @@ const Notes = () => {
         Your Notes
       </h1>
       <div className="mt-10 flex flex-wrap gap-10 w-full h-max items-center justify-center md:items-start md:justify-start">
-        <Card/>      
+        <Card
+          notes="  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste explicabo necessitatibus distinctio inventore ut? Minus quasi quos porro numquam, similique ullam tenetur illum at iste incidunt"
+          date="24 may 2024"
+          editing={false}
+        />
+        <Card
+          notes="  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste explicabo necessitatibus distinctio inventore ut? Minus quasi quos porro numquam, similique ullam tenetur illum at iste incidunt"
+          date="24 may 2024"
+          editing={false}
+        />{" "}
+        <Card
+          notes="  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste explicabo necessitatibus distinctio inventore ut? Minus quasi quos porro numquam, similique ullam tenetur illum at iste incidunt"
+          date="24 may 2024"
+          editing={false}
+        />{" "}
+        <Card
+          notes="  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste explicabo necessitatibus distinctio inventore ut? Minus quasi quos porro numquam, similique ullam tenetur illum at iste incidunt"
+          date="24 may 2024"
+          editing={false}
+        />{" "}
+        <Card
+          notes="  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste explicabo necessitatibus distinctio inventore ut? Minus quasi quos porro numquam, similique ullam tenetur illum at iste incidunt"
+          date="24 may 2024"
+          editing={false}
+        />{" "}
+        <Card
+          notes="  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste explicabo necessitatibus distinctio inventore ut? Minus quasi quos porro numquam, similique ullam tenetur illum at iste incidunt"
+          date="24 may 2024"
+          editing={false}
+        />{" "}
+        <Card
+          notes="  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste explicabo necessitatibus distinctio inventore ut? Minus quasi quos porro numquam, similique ullam tenetur illum at iste incidunt"
+          date="24 may 2024"
+          editing={false}
+        />{" "}
+        <Card
+          notes="  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste explicabo necessitatibus distinctio inventore ut? Minus quasi quos porro numquam, similique ullam tenetur illum at iste incidunt"
+          date="24 may 2024"
+          editing={false}
+        />{" "}
+        <Card
+          notes="  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste explicabo necessitatibus distinctio inventore ut? Minus quasi quos porro numquam, similique ullam tenetur illum at iste incidunt"
+          date="24 may 2024"
+          editing={false}
+        />{" "}
+        <Card
+          notes="  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste explicabo necessitatibus distinctio inventore ut? Minus quasi quos porro numquam, similique ullam tenetur illum at iste incidunt"
+          date="24 may 2024"
+          editing={false}
+        />{" "}
+        <Card
+          notes="  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste explicabo necessitatibus distinctio inventore ut? Minus quasi quos porro numquam, similique ullam tenetur illum at iste incidunt"
+          date="24 may 2024"
+          editing={false}
+        />{" "}
+        <Card
+          notes="  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste explicabo necessitatibus distinctio inventore ut? Minus quasi quos porro numquam, similique ullam tenetur illum at iste incidunt"
+          date="24 may 2024"
+          editing={false}
+        />{" "}
+        <Card
+          notes="  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste explicabo necessitatibus distinctio inventore ut? Minus quasi quos porro numquam, similique ullam tenetur illum at iste incidunt"
+          date="24 may 2024"
+          editing={false}
+        />{" "}
+        <Card
+          notes="  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste explicabo necessitatibus distinctio inventore ut? Minus quasi quos porro numquam, similique ullam tenetur illum at iste incidunt"
+          date="24 may 2024"
+          editing={false}
+        />{" "}
+        <Card
+          notes="   inventore ut? Minus quasi quos porro numquam, similique ullam tenetur illum at iste incidunt"
+          date="24 may 2024"
+          editing={false}
+        />{" "}
+        <Card
+          notes="  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste explicabo necessitatibus distinctio inventore ut? Minus quasi quos porro numquam, similique ullam tenetur illum at iste incidunt"
+          date="24 may 2024"
+          editing={false}
+        />
       </div>
     </div>
   );

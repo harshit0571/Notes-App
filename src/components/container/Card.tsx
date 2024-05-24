@@ -1,10 +1,14 @@
 import { useState } from "react";
 
-const Card = () => {
-  const [isEditing, setIsEditing] = useState(false);
-  const [text, setText] = useState(
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, ipsum provident sint dolorem lor"
-  );
+interface props {
+  notes: string;
+  date: string;
+  editing: boolean;
+}
+
+const Card = ({ notes, date, editing }: props) => {
+  const [isEditing, setIsEditing] = useState(editing);
+  const [text, setText] = useState(notes);
 
   const handleEditClick = () => {
     setIsEditing(!isEditing);
@@ -24,20 +28,20 @@ const Card = () => {
   };
 
   return (
-    <div className="relative w-[250px] p-4 min-h-[200px] overflow-scroll pt-6 h-max bg-red-400 rounded-2xl flex flex-col justify-between group">
-      <div>
+    <div className="relative w-[250px] p-4 min-h-[200px] overflow-scroll pt-6 bg-red-400 rounded-2xl flex flex-col justify-between group gap-4 h-[250px]">
+      <div className="overflow-auto h-[70%] max-h-[150px]">
         {isEditing ? (
           <textarea
             value={text}
             onChange={handleInputChange}
-            className="w-full p-2 rounded bg-red-400 min-h-[100px] ring-1 ring-white outline-none"
+            className="w-full p-2 rounded bg-red-400 min-h-[150px] ring-1 ring-white outline-none"
           />
         ) : (
-          text
+          <p>{text}</p>
         )}
       </div>
-      <div className="flex justify-between items-baseline">
-        <p>21 May 2024</p>
+      <div className="flex justify-between h-max items-baseline">
+        <p>{date}</p>
         <div className="w-max flex space-x-2">
           <button
             onClick={handleDeleteClick}
