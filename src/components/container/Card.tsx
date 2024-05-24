@@ -4,10 +4,11 @@ interface props {
   notes: string;
   date: string;
   editing: boolean;
+  setNotes: any;
 }
 
 const Card = ({ notes, date, editing }: props) => {
-  const [isEditing, setIsEditing] = useState(editing);
+  const [isEditing, setIsEditing] = useState(editing || notes === "");
   const [text, setText] = useState(notes);
 
   const handleEditClick = () => {
@@ -34,7 +35,7 @@ const Card = ({ notes, date, editing }: props) => {
           <textarea
             value={text}
             onChange={handleInputChange}
-            className="w-full p-2 rounded bg-red-400 min-h-[150px] ring-1 ring-white outline-none"
+            className="w-full p-2 rounded bg-red-400 min-h-[150px] outline-none border-blue-200"
           />
         ) : (
           <p>{text}</p>
