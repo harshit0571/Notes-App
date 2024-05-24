@@ -1,3 +1,5 @@
+import Card from "./Card";
+
 const Notes = () => {
   return (
     <div className="flex flex-col p-4">
@@ -5,23 +7,7 @@ const Notes = () => {
         Your Notes
       </h1>
       <div className="mt-10 flex flex-wrap gap-10 w-full h-max items-center justify-center md:items-start md:justify-start">
-        <div className="w-[200px] h-[200px] bg-red-500 rounded-2xl"></div>
-        <div className="w-[200px] h-[200px] bg-red-500 rounded-2xl"></div>
-
-        <div className="w-[200px] h-[200px] bg-red-500 rounded-2xl"></div>
-        <div className="w-[200px] h-[200px] bg-red-500 rounded-2xl"></div>
-        <div className="w-[200px] h-[200px] bg-red-500 rounded-2xl"></div>
-
-        <div className="w-[200px] h-[200px] bg-red-500 rounded-2xl"></div>
-        <div className="w-[200px] h-[200px] bg-red-500 rounded-2xl"></div>
-        <div className="w-[200px] h-[200px] bg-red-500 rounded-2xl"></div>
-        <div className="w-[200px] h-[200px] bg-red-500 rounded-2xl"></div>
-        <div className="w-[200px] h-[200px] bg-red-500 rounded-2xl"></div>
-        <div className="w-[200px] h-[200px] bg-red-500 rounded-2xl"></div>
-
-        <div className="w-[200px] h-[200px] bg-red-500 rounded-2xl"></div>
-        <div className="w-[200px] h-[200px] bg-red-500 rounded-2xl"></div>
-        <div className="w-[200px] h-[200px] bg-red-500 rounded-2xl"></div>
+        <Card/>      
       </div>
     </div>
   );

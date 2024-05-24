@@ -16,3 +16,10 @@ html {
 ::-webkit-scrollbar {
   display: none;
 }
+.delete-button-visible .delete-button {
+  display: block !important;
+}
+
+.delete-button {
+  display: none;
+}

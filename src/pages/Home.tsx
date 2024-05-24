@@ -8,7 +8,6 @@ const Home = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   useEffect(() => {
-    setTimeout(() => {}, 3000);
     if (!user) {
       navigate("/login");
     }
