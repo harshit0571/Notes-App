@@ -3,11 +3,16 @@
 import { useContext } from "react";
 import { colorsArray } from "./ColorsArray";
 import { AuthContext } from "../../context/AuthProvider";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../../firebase";
 
 const Colors = () => {
-  const { notes, setNotes } = useContext(AuthContext);
-
-  const handleColorClick = (color: any) => {
+  const { notes, setNotes, user } = useContext(AuthContext);
+  const pushTask = async (newNote: object) => {
+    const taskDocRef = doc(db, "tasks", newNote.id);
+    await setDoc(taskDocRef, newNote);
+  };
+  const handleColorClick = async (color: any) => {
     const currentDate = new Date().toISOString().split("T")[0];
     const randomId = generateRandomId();
     const newNote = {
@@ -15,9 +20,12 @@ const Colors = () => {
       note: "",
       date: currentDate,
       color: color,
+      uid: user.uid,
     };
+
     const updatedNotes = [newNote, ...notes];
     setNotes(updatedNotes);
+    pushTask(newNote);
   };
 
   const generateRandomId = () => {
