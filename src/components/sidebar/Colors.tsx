@@ -18,7 +18,7 @@ const Colors = () => {
     await setDoc(taskDocRef, newNote);
   };
   const handleColorClick = async (color: any) => {
-    const currentDate = new Date().toISOString().split("T")[0];
+    const currentDate = new Date().toISOString();
     const randomId = generateRandomId();
     const newNote = {
       id: randomId,

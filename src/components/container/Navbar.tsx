@@ -5,13 +5,14 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 
 const Navbar = () => {
-  const { user, notes, setNotes,  } = useContext(AuthContext);
+  const { user, notes, setNotes } = useContext(AuthContext);
   const [tempArray, settempArray] = useState(notes);
   const [showSignOut, setShowSignOut] = useState(false);
   const [searchTerm, setSearchTerm] = useState(""); // State for search term
   const [FetchOnce, setFetchOnce] = useState(false);
   useEffect(() => {
-    if (notes.length > 0 && !FetchOnce || notes.lenght>tempArray.length) {
+    console.log(notes);
+    if ((notes.length > 0 && !FetchOnce) || notes.lenght > tempArray.length) {
       settempArray(notes);
       setFetchOnce(true);
     }
@@ -36,7 +37,7 @@ const Navbar = () => {
     const searchItem = e.target.value.toLowerCase();
     setSearchTerm(searchItem);
     console.log(searchItem, "ddhkskdjs");
-
+    
     const filteredNotes = tempArray.filter((note: any) =>
       note.note.toLowerCase().includes(searchItem)
     );

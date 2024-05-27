@@ -42,8 +42,14 @@ const AuthProvider = ({ children }: props) => {
           console.log(doc.id, " => ", doc.data());
           notesArray.push(doc.data());
         });
+        notesArray.sort((a:any, b:any) => {
+          const dateA = new Date(a.date);
+          const dateB = new Date(b.date);
+          return dateB.getTime() - dateA.getTime(); // latest first
+        });
+
         setNotes(notesArray);
-        console.log(notes);
+        console.log(notesArray);
       }
     };
     getData();

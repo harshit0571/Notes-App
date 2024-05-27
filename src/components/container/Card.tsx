@@ -87,7 +87,7 @@ const Card = ({ note, date, editing, color, index }: Props) => {
         )}
       </div>
       <div className="flex justify-between h-max items-baseline">
-        <p>{date}</p>
+        <p>{date.split("T")[0]}</p>
         <div className="w-max flex space-x-2">
           <button
             onClick={handleDeleteClick}
