@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 
 const Navbar = () => {
-  const { user, notes, setNotes } = useContext(AuthContext);
+  const { user, notes, setNotes, setUser } = useContext(AuthContext);
   const [tempArray, settempArray] = useState(notes);
   const [showSignOut, setShowSignOut] = useState(false);
   const [searchTerm, setSearchTerm] = useState(""); // State for search term
@@ -26,10 +26,13 @@ const Navbar = () => {
     signOut(auth)
       .then(() => {
         navigate("/login");
+        console.log("login");
       })
       .catch((error) => {
         console.log(error);
       });
+    navigate("/login");
+    setUser(null);
     console.log("Sign out clicked");
   };
 
@@ -37,7 +40,7 @@ const Navbar = () => {
     const searchItem = e.target.value.toLowerCase();
     setSearchTerm(searchItem);
     console.log(searchItem, "ddhkskdjs");
-    
+
     const filteredNotes = tempArray.filter((note: any) =>
       note.note.toLowerCase().includes(searchItem)
     );
@@ -61,12 +64,14 @@ const Navbar = () => {
             onClick={handleAvatarClick}
             className="bg-orange-400 h-[30px] w-[30px] min-h-[25px] min-w-[25px] text-xl rounded-full transition-all hover:bg-gray-100 text-center pt-[0.9] text-white cursor-pointer"
           >
-            H
+            {user.email[0]}
           </div>
         )}
         {showSignOut && (
           <button
-            onClick={handleSignOut}
+            onClick={() => {
+              handleSignOut();
+            }}
             className="absolute right-0 mt-2 bg-red-500 text-white p-2 rounded-lg shadow-lg transition-all hover:bg-red-600 w-max text-center py-1 z-50"
           >
             Sign Out

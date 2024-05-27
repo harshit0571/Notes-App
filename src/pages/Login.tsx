@@ -11,7 +11,7 @@ const Login = () => {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    console.log("d");
+    console.log("login page");
     if (user) {
       navigation("/");
     }
