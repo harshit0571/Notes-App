@@ -12,7 +12,11 @@ interface Props {
   color: string;
   index: number;
 }
-
+interface NoteInterface {
+  id: string;
+  note: string;
+  [key: string]: any;
+}
 const Card = ({ note, date, editing, color, index }: Props) => {
   const [isEditing, setIsEditing] = useState(editing || note === "");
   const [text, setText] = useState(note); // Initialize text with an empty string
@@ -20,7 +24,7 @@ const Card = ({ note, date, editing, color, index }: Props) => {
 
   console.log(note, "d");
 
-  const updateTask = async (updatedNote: object) => {
+  const updateTask = async (updatedNote: NoteInterface) => {
     const taskDocRef = doc(db, "tasks", updatedNote.id);
     console.log(taskDocRef, "d");
     await updateDoc(taskDocRef, updatedNote);
