@@ -8,7 +8,12 @@ import { db } from "../../firebase";
 
 const Colors = () => {
   const { notes, setNotes, user } = useContext(AuthContext);
-  const pushTask = async (newNote: object) => {
+  interface NoteInterface {
+    id: string;
+    note: string;
+    [key: string]: any;
+  }
+  const pushTask = async (newNote: NoteInterface) => {
     const taskDocRef = doc(db, "tasks", newNote.id);
     await setDoc(taskDocRef, newNote);
   };
